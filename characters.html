@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Soul Land Characters - Spirit Profiles</title>
+    <meta name="description" content="Explore the characters and spirits of Soul Land. View Soul Power Ranks, Spirit Rings, and biographies.">
+    <meta name="theme-color" content="#4f46e5">
+    
+    <link rel="manifest" href="/manifest.json">
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-50K2PXNMXB"></script>
+    <script>
+      window.dataLayer = window.dataLayer || []; function gtag(){dataLayer.push(arguments);} gtag('js', new Date()); gtag('config', 'G-50K2PXNMXB');
+    </script>
+    
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+      tailwind.config = {
+        theme: {
+          extend: {
+            colors: {
+              primary: '#4f46e5',
+              spiritblue: '#00d2ff',
+              spiritgold: '#fbbf24',
+              void: '#1e1b4b',
+              darkbg: '#0a0a14',
+            },
+            fontFamily: {
+              heading: ['Cinzel', 'serif'],
+              body: ['Plus Jakarta Sans', 'sans-serif'],
+            }
+          }
+        }
+      }
+    </script>
+    <link rel="stylesheet" href="/assets/css/styles.css">
+    <style>
+        /* CSS specific for spirit rings */
+        .ring-display span {
+            display: inline-block;
+            width: 12px; height: 12px;
+            border-radius: 50%;
+            margin-right: 4px;
+        }
+        .ring-yellow { background: yellow; box-shadow: 0 0 5px yellow; }
+        .ring-purple { background: purple; box-shadow: 0 0 5px purple; }
+        .ring-black { background: black; border: 1px solid #333; box-shadow: 0 0 5px rgba(255,255,255,0.2); }
+        .ring-red { background: red; box-shadow: 0 0 8px red; }
+    </style>
+</head>
+<body class="bg-darkbg text-gray-200 font-body">
+
+    <!-- Header -->
+    <header class="fixed w-full top-0 z-50 glass-panel border-b border-spiritblue/20">
+        <div class="container mx-auto px-6 py-4 flex justify-between items-center">
+            <a href="/index.html" class="flex items-center space-x-2">
+                <div class="w-8 h-8 rounded-full bg-gradient-to-tr from-primary to-spiritblue flex items-center justify-center">
+                    <span class="text-white font-bold text-sm font-heading">SL</span>
+                </div>
+                <span class="text-xl font-heading font-bold text-gradient">Soul Land</span>
+            </a>
+            
+            <nav class="hidden md:flex space-x-8">
+                <a href="/index.html" class="hover:text-spiritblue transition">Home</a>
+                <a href="/chapters.html" class="hover:text-spiritblue transition">Chapters</a>
+                <a href="/characters.html" class="text-spiritblue border-b-2 border-spiritblue pb-1">Spirits</a>
+                <a href="/settings.html" class="hover:text-spiritblue transition">Settings</a>
+            </nav>
+            <button class="md:hidden text-2xl text-spiritblue">&#9776;</button>
+        </div>
+    </header>
+
+    <main class="container mx-auto px-6 pt-32 pb-24 min-h-screen">
+        <h1 class="text-4xl text-center font-heading font-bold mb-16">Spirit <span class="text-gradient">Profiles</span></h1>
+        
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-8">
+            <script>
+                const characters = [
+                    { name: 'Tang San', spirit: 'Blue Silver Grass & Clear Sky Hammer', rank: 'Title Douluo (Lv 93)', desc: 'The genius of the Tang Sect, possessing twin martial spirits and profound hidden weapon knowledge.', rings: ['ring-yellow','ring-yellow','ring-purple','ring-black','ring-black','ring-red'] },
+                    { name: 'Xiao Wu', spirit: 'Soft Bone Demon Rabbit', rank: 'Title Douluo (Lv 90)', desc: 'A 100,000-year-old spirit beast in human form. Tang San\'s closest companion.', rings: ['ring-yellow','ring-yellow','ring-purple','ring-purple','ring-black','ring-black'] },
+                    { name: 'Dai Mubai', spirit: 'White Tiger', rank: 'Title Douluo (Lv 95)', desc: 'The resolute leader of the Shrek Seven Devils.', rings: ['ring-yellow','ring-yellow','ring-purple','ring-purple','ring-black'] },
+                    { name: 'Zhu Zhuqing', spirit: 'Hell Civet', rank: 'Title Douluo (Lv 93)', desc: 'An agile, cold, and immensely loyal assassin.', rings: ['ring-yellow','ring-yellow','ring-purple','ring-purple','ring-black'] },
+                    { name: 'Ning Rongrong', spirit: 'Nine Treasure Glazed Tile Pagoda', rank: 'Title Douluo (Lv 94)', desc: 'The ultimate support system, heiress to the Seven Treasure clan.', rings: ['ring-yellow','ring-yellow','ring-purple','ring-purple','ring-black'] },
+                    { name: 'Oscar', spirit: 'Sausage', rank: 'Title Douluo (Lv 92)', desc: 'The first innate full spirit power food-type master on the continent.', rings: ['ring-yellow','ring-yellow','ring-purple','ring-purple','ring-black'] }
+                ];
+                
+                characters.forEach(char => {
+                    let ringHTML = char.rings.map(r => `<span class="${r}"></span>`).join('');
+                    
+                    document.write(`
+                    <div class="glass-panel p-6 rounded-2xl border border-spiritblue/20 hover:border-spiritblue transition duration-300 group">
+                        <div class="w-24 h-24 mx-auto rounded-full bg-void border-2 border-primary mb-4 p-1 group-hover:scale-105 transition duration-300 spirit-ring-glow">
+                            <div class="w-full h-full bg-black rounded-full overflow-hidden flex items-center justify-center text-xs text-gray-600">
+                                AVATAR
+                            </div>
+                        </div>
+                        <h2 class="text-2xl font-bold font-heading text-center text-white group-hover:text-spiritgold">${char.name}</h2>
+                        <div class="text-center text-xs text-spiritblue font-semibold mb-3 tracking-widest uppercase">${char.rank}</div>
+                        
+                        <div class="bg-void p-3 rounded-lg border border-white/5 mb-4 text-sm">
+                            <div class="mb-1"><span class="text-gray-400">Spirit:</span> <span class="text-white">${char.spirit}</span></div>
+                            <div><span class="text-gray-400">Rings:</span> <div class="ring-display inline-block ml-1">${ringHTML}</div></div>
+                        </div>
+                        
+                        <p class="text-sm text-gray-400 text-center">${char.desc}</p>
+                    </div>
+                    `);
+                });
+            </script>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-black py-8 border-t border-void text-center text-gray-600 text-sm">
+        <p>&copy; 2026 readsoulland.com</p>
+    </footer>
+
+    <script src="/assets/js/app.js"></script>
+</body>
+</html>

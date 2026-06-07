@@ -1,0 +1,18 @@
+{
+  "name": "Soul Land: Legend of The Gods' Realm",
+  "short_name": "Soul Land",
+  "description": "Read Soul Land (Douluo Dalu) manga and awaken your spirit power.",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#0a0a14",
+  "theme_color": "#4f46e5",
+  "orientation": "portrait-primary",
+  "icons": [
+    {
+      "src": "/favicon.svg",
+      "sizes": "any",
+      "type": "image/svg+xml",
+      "purpose": "maskable any"
+    }
+  ]
+}

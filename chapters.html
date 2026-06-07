@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Soul Land Chapters | Read Douluo Dalu Manga Online</title>
+    <meta name="description" content="A complete archive of Soul Land (Douluo Dalu) manga chapters. Filter by arcs, search chapters, and save your progress offline.">
+    <meta name="theme-color" content="#4f46e5">
+    
+    <!-- Google Tag -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-50K2PXNMXB"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'G-50K2PXNMXB');
+    </script>
+    
+    <!-- PWA Manifest -->
+    <link rel="manifest" href="/manifest.json">
+    
+    <!-- Styles & Tailwind -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+      tailwind.config = {
+        theme: {
+          extend: {
+            colors: {
+              primary: '#4f46e5',
+              spirit: {
+                blue: '#00d2ff',
+                gold: '#fbbf24',
+              },
+              void: '#1e1b4b',
+              darkbg: '#0a0a14',
+              textcolor: '#f1f5f9'
+            },
+            fontFamily: {
+              heading: ['Cinzel', 'serif'],
+              body: ['Plus Jakarta Sans', 'sans-serif'],
+            }
+          }
+        }
+      }
+    </script>
+    <link rel="stylesheet" href="/assets/css/styles.css">
+    <script src="/assets/js/chapters_data.js"></script>
+</head>
+<body class="bg-darkbg text-textcolor font-body selection:bg-primary selection:text-white pb-20">
+
+    <!-- Header -->
+    <header class="fixed w-full top-0 z-50 glass-panel border-b border-spirit-blue/20">
+        <div class="container mx-auto px-6 py-4 flex justify-between items-center">
+            <a href="/index.html" class="flex items-center space-x-2">
+                <div class="w-8 h-8 rounded-full bg-gradient-to-tr from-primary to-spirit-blue flex items-center justify-center">
+                    <span class="text-white font-bold text-sm font-heading">SL</span>
+                </div>
+                <span class="text-xl font-heading font-bold text-gradient">Soul Land</span>
+            </a>
+            
+            <nav class="hidden md:flex space-x-8">
+                <a href="/index.html" class="hover:text-spirit-blue transition duration-300">Home</a>
+                <a href="/chapters.html" class="text-spirit-blue border-b-2 border-spirit-blue pb-1">Chapters</a>
+                <a href="/characters.html" class="hover:text-spirit-blue transition duration-300">Spirits</a>
+                <a href="/settings.html" class="hover:text-spirit-blue transition duration-300">Settings</a>
+            </nav>
+            <button class="md:hidden text-2xl text-spirit-blue">&#9776;</button>
+        </div>
+    </header>
+
+    <!-- Content -->
+    <main class="container mx-auto px-6 pt-32 min-h-screen">
+        <div class="text-center mb-12">
+            <h1 class="text-4xl md:text-5xl font-heading font-bold mb-4">Spirit <span class="text-gradient">Scrolls</span> Archive</h1>
+            <p class="text-gray-400 max-w-2xl mx-auto">Explore all 360 chapters of Tang San's journey. Filter by arc or search for specific moments.</p>
+        </div>
+
+        <!-- Filters & Search -->
+        <div class="glass-panel rounded-2xl p-6 mb-12 flex flex-col md:flex-row gap-6 justify-between items-center">
+            <div class="w-full md:w-1/3">
+                <input type="text" placeholder="Search chapters..." class="w-full bg-void border border-spirit-blue/30 rounded-full px-6 py-3 text-white focus:outline-none focus:border-spirit-blue transition">
+            </div>
+            
+            <div class="flex items-center gap-4 w-full md:w-auto">
+                <select class="bg-void border border-spirit-blue/30 rounded-full px-6 py-3 text-white w-full md:w-auto focus:outline-none appearance-none cursor-pointer">
+                    <option value="all">All Arcs (Spirit Index)</option>
+                    <option value="academy">Shrek Academy Arc</option>
+                    <option value="tournament">Continental Tournament</option>
+                    <option value="seagod">Sea God Island Arc</option>
+                    <option value="war">Spirit Empire War</option>
+                </select>
+                
+                <button class="bg-primary/20 text-primary border border-primary hover:bg-primary hover:text-white px-6 py-3 rounded-full transition w-full md:w-auto text-nowrap whitespace-nowrap">
+                    Sort: Newest
+                </button>
+            </div>
+        </div>
+
+        <!-- Chapter Grid (driven by chapters_data.js) -->
+        <div id="ch-grid" style="display:grid;grid-template-columns:repeat(auto-fill,minmax(240px,1fr));gap:14px;">
+            <script>
+                const nums = Object.keys(chaptersData).map(Number).sort((a,b)=>b-a);
+                nums.forEach(i => {
+                    const raw = chaptersData[i] || '';
+                    const folder = raw.replace(/^\/manga\/Soul Land\//, '').replace(/\/[^/]+$/, '');
+                    const link   = folder ? '/manga/Soul Land/' + folder + '/index.html' : '#';
+                    const thumb  = raw;
+                    const isS    = i % 50 === 0 || i === 1;
+                    const badge  = isS ? '<span style="position:absolute;top:-4px;right:-4px;background:#f5a623;color:#000;font-size:0.6rem;font-weight:700;padding:2px 8px;border-radius:999px;z-index:1;">S-RANK</span>' : '';
+                    document.write('<a href="' + link + '" style="text-decoration:none;">'
+                      + '<div style="background:#111120;border:1px solid rgba(79,70,229,0.25);border-radius:12px;padding:12px;display:flex;align-items:center;gap:12px;position:relative;transition:all 0.2s;" onmouseover="this.style.borderColor=\'#00d2ff\';this.style.boxShadow=\'0 4px 16px rgba(0,210,255,0.15)\';" onmouseout="this.style.borderColor=\'rgba(79,70,229,0.25)\';this.style.boxShadow=\'none\';">'
+                      + badge
+                      + '<div style="width:54px;height:54px;border-radius:8px;overflow:hidden;background:#000;flex-shrink:0;">'
+                      + (thumb ? '<img src="' + thumb + '" loading="lazy" style="width:100%;height:100%;object-fit:cover;" onerror="this.style.display=\'none\'">' : '')
+                      + '</div>'
+                      + '<div style="min-width:0;">'
+                      + '<p style="font-family:Cinzel,serif;font-weight:700;font-size:0.9rem;color:' + (isS ? '#f5a623' : '#fff') + ';">Ch.' + String(i).padStart(3,'0') + '</p>'
+                      + '<p style="font-size:0.75rem;color:#9094b8;margin-top:3px;">Read Now</p>'
+                      + '</div></div></a>');
+                });
+            </script>
+        </div>
+    </main>
+
+
+    <!-- Footer -->
+    <footer class="bg-black py-8 mt-20 border-t border-void text-center text-gray-500 text-sm">
+        <p>&copy; 2026 readsoulland.com. Building the Spirit Empire.</p>
+    </footer>
+
+    <script src="/assets/js/app.js"></script>
+</body>
+</html>

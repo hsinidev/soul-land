@@ -1,0 +1,60 @@
+{
+  "project_variables": {
+    "website_name": "Soul Land Online",
+    "manga_name": "Soul Land: Legend of The Gods' Realm",
+    "domain": "readsoulland.com",
+    "google_tag_id": "G-50K2PXNMXB",
+    "primary_color": "#00d2ff",
+    "secondary_color": "#ffaa00",
+    "background_color": "#0a0a0c",
+    "manga_path": "src/lib/chapters.json",
+    "image_folder": "/manga/Soul Land/"
+  },
+  "master_blueprint": {
+    "objective": "Build a high-performance, SEO-optimized, and immersive Manga Reader platform using SvelteKit 5.",
+    "tech_stack": [
+      "SvelteKit 5 (Runes)",
+      "Vite",
+      "@sveltejs/adapter-static (for VPS/Static hosting)",
+      "Vanilla CSS (Global Design System)",
+      "Lucide Svelte (Icons)",
+      "JSON-LD (Rich Search Results)"
+    ],
+    "core_features": {
+      "reader_experience": {
+        "style": "Continuous Vertical Scroll (Webtoon style)",
+        "features": [
+          "Floating glassmorphism controls",
+          "Chapter jump dropdown with 'Click Outside' to close logic",
+          "Previous/Next navigation",
+          "Lazy loading images for speed",
+          "Progress bar tracking"
+        ]
+      },
+      "ui_ux_design": {
+        "theme": "Dark 'Void' palette with vibrant neon accents",
+        "effects": [
+          "Animated Hero Title with glow/flicker effects",
+          "Background Electric/Lightning Arc animations using SVG paths",
+          "Bento Grid for chapter architecture",
+          "Glassmorphism overlays for navigation and menus",
+          "Micro-interactions (scaling on click, glowing on hover)"
+        ]
+      },
+      "performance_seo": {
+        "seo_strategy": [
+          "Dynamic Sitemap.xml generator (automatically mapping all chapters from JSON)",
+          "Page-specific meta tags (Open Graph, Twitter, Canonical)",
+          "Robots.txt and OpenSearch.xml configuration",
+          "Adaptive image loading"
+        ],
+        "optimization": [
+          "Static Site Generation (SSG) for instant page loads",
+          "Minimal client-side JavaScript for the core reader",
+          "Google Analytics (gtag.js) integration in app.html"
+        ]
+      }
+    },
+    "implementation_instructions": "1. Initialize SvelteKit 5 with adapter-static. 2. Define global CSS variables based on the project_variables. 3. Structure the chapter data in a central JSON file. 4. Implement a dynamic route [slug] for chapters. 5. Set up the sitemap.xml server route to pull from the JSON data. 6. Build the 'Load More' pagination logic for the homepage. 7. Use the 'Void' design language: High blur, high contrast, deep shadows."
+  }
+}

@@ -1,0 +1,137 @@
+{
+  "project_variables": {
+    "manga_name": "Soul Land",
+    "alternative_name": "Douluo Dalu",
+    "website_name": "Soul Land Online",
+    "domain": "https://readsoulland.com/",
+    "google_tag_id": "G-50K2PXNMXB",
+    "chapter_count": 360
+  },
+  "core_prompt": {
+    "role": "Manga-Architect",
+    "description": "An expert AI prompt engineer specializing in designing prompt sequences for Google's Antigravity EDI to construct professional, visually stunning, and user-friendly websites for manga series, with a focus on modern Progressive Web App (PWA) technologies.",
+    "objective": "Interact with a user to gather essential details about their manga series and then generate a structured, multi-part prompt set. This prompt set will be used by a downstream web development AI to build a complete, professional, and feature-rich manga website from the ground up, fully realized as an installable PWA.",
+    "context_gathering": [
+      "Soul Land",
+      "Tang Jia San Shao",
+      "Action, Adventure, Fantasy, Martial Arts, Shonen",
+      "Tang San, a genius of the Tang Sect, is reborn in Douluo Dalu, a world where everyone has a spirit and spirit power determines their fate.",
+      "Xianxia Fans / Action Manhua Readers / Global Fantasy Audience",
+      "Cultivation, Spirit Awakening, Loyalty, Hidden Weapons, Soul Power Ranks",
+      "Ethereal fantasy art with vibrant spirit ring effects, complex soul beast designs, and glowing cultivation interfaces",
+      "Deep Spirit Indigo (#4f46e5), Spirit Power Blue (#00d2ff), Spirit Ring Gold (#fbbf24), Void Purple (#1e1b4b)",
+      "Blue Silver Grass Emblem, Spirit Ring Glow Overlays, Tang San Hidden Weapon Schematics, Spirit Beast Forest Backgrounds"
+    ],
+    "prompts": [
+      {
+        "id": "PROMPT_01_GLOBAL_STYLE_GUIDE",
+        "objective": "Define the website's universal design language and technical foundation.",
+        "task": "Generate the CSS and design token configuration for a professional manga website.",
+        "instructions": {
+          "Design Philosophy": "Ethereal, high-fantasy, and immersive. The UI should feel like a 'Spirit Awakening' ritual—mystical but functional.",
+          "Typography": "Headings: Use a clean but slightly ornate serif font for an ancient feel. Body Text: Use high-legibility sans-serif like Plus Jakarta Sans.",
+          "Color Palette": "Primary: [Primary Color Palette]. Background: Deep Cultivation Dark (#0a0a14). Text: Ethereal White (#f1f5f9).",
+          "UI Elements": "Spirit-ring glow borders with subtle glassmorphism. Use Tailwind CSS for a mobile-first, responsive cultivation-interface layout."
+        }
+      },
+      {
+        "id": "PROMPT_02_HOMEPAGE",
+        "objective": "Create a visually striking landing page that hooks new readers and encourages app installation.",
+        "task": "Design the homepage for the manga titled [Manga Title].",
+        "instructions": {
+          "Header (Sticky)": "Left: [Logo], Center: Navigation (Home, Chapters, Spirits, Settings), Right: 'Start Cultivating' and 'Install App' buttons.",
+          "Hero Section": "Full-width [Main cover art] with a floating spirit ring parallax effect. Include Title, Synopsis, and dual 'Awaken (Ch. 1)' and 'Current Rank (Latest)' CTAs.",
+          "Latest Release Section": "Grid of the 8 most recent chapters styled as glowing 'Spirit Tablets' with lazy-loaded thumbnails.",
+          "Character Introduction Section": "Grid of Shrek Seven Devils using [Character Portraits] with Spirit-Awakening hover animations.",
+          "Footer": "Links for About Us, Contact, Privacy Policy, DMCA, Terms, Cookies, and Disclaimer. Author credits and Copyright."
+        }
+      },
+      {
+        "id": "PROMPT_03_CHAPTER_LIST_PAGE",
+        "objective": "Provide a clear, easy-to-navigate list of all chapters with offline capabilities.",
+        "task": "Design the 'Chapters' page.",
+        "instructions": {
+          "Layout": "Responsive grid-based list of chapter cards (Spirit Scrolls).",
+          "Cards": "Include Chapter Number, Title, Date, Thumbnail. Use Gold border for 'S-Rank' key chapters.",
+          "Interactions": "Spirit-power ripple effect on hover.",
+          "Features": "Searchable SPIRIT_INDEX dropdown with arc-filtering (e.g., Sea God Island Arc). Sort by Newest/Oldest. Save scroll position."
+        }
+      },
+      {
+        "id": "PROMPT_04_MANGA_READER_INTERFACE",
+        "objective": "Create a modern, immersive, and high-performance 'gapless' vertical scrolling reading experience.",
+        "task": "Design the manga reader UI (long-strip style).",
+        "instructions": {
+          "Layout": "Continuous vertical flow with pure black background. Images must be full-screen (object-fit: contain) for mobile dominance.",
+          "Performance": "Implement image chunking and pre-loading. Ensure zero white lines between panels.",
+          "Controls (Overlay)": "Ethereal glassmorphic overlay on tap. Include progress bar, chapter dropdown, and spirit-power themed navigation."
+        }
+      },
+      {
+        "id": "PROMPT_05_CHARACTER_PROFILES_PAGE",
+        "objective": "Build a database of characters for fans to explore.",
+        "task": "Design the 'Characters' page.",
+        "instructions": {
+          "Layout": "Responsive grid of character portraits linking to detailed Spirit Profiles.",
+          "Profile View": "Display Spirit type, Soul Power Rank, and Spirit Ring configuration alongside Biography."
+        }
+      },
+      {
+        "id": "PROMPT_06_SEO_AND_METADATA",
+        "objective": "Optimize the website for search engines and AI generative crawlers.",
+        "task": "Generate SEO metadata and structured data.",
+        "instructions": {
+          "AI-Snippet": "Generate 150-word executive summaries for every chapter in a blockquote for GEO extraction.",
+          "Content": "Use gpt-oss:120b via Ollama API with 16-key rotation to generate 1500-word tactical reports (Spirit Lore & Cultivation Analysis) for each page.",
+          "Schema": "Implement ComicSeries JSON-LD, Book schema, and BreadcrumbList. Generate dynamic sitemap.xml."
+        }
+      },
+      {
+        "id": "PROMPT_07_ACCESSIBILITY_AND_PERFORMANCE",
+        "objective": "Ensure the website is accessible to all users and loads quickly.",
+        "task": "Implement a11y features and performance optimizations.",
+        "instructions": {
+          "Accessibility": "Descriptive alt text for soul beast panels, ARIA roles, and high color contrast.",
+          "Performance": "Optimize all 360+ chapters to AVIF format. Minify assets and implement Intersection Observer."
+        }
+      },
+      {
+        "id": "PROMPT_08_PWA_MANIFEST_AND_INSTALLATION",
+        "objective": "Configure the Web App Manifest for a native 'add to home screen' experience.",
+        "task": "Generate manifest.json.",
+        "instructions": {
+          "Properties": "name: [Manga Title], short_name: [Manga Title], display: 'standalone', theme_color: '#4f46e5'.",
+          "Icons": "Array of icons (192x192, 512x512 maskable).",
+          "Link": "Inject <link rel='manifest' href='/manifest.json'> into HTML <head>."
+        }
+      },
+      {
+        "id": "PROMPT_09_SERVICE_WORKER_AND_CACHING",
+        "objective": "Implement the core service worker for offline functionality.",
+        "task": "Create and register service-worker.js.",
+        "instructions": {
+          "Registration": "Register safely after page load.",
+          "Caching": "Implement 'Cache First' for app shell and 'Stale-While-Revalidate' for chapters. Enable offline reading for 'Downloaded Spirit Scrolls'."
+        }
+      },
+      {
+        "id": "PROMPT_10_BACKGROUND_SYNC_AND_NOTIFICATIONS",
+        "objective": "Implement features to proactively engage users with new content.",
+        "task": "Configure Push API and Background Sync.",
+        "instructions": {
+          "Push Notifications": "Request permission via UI. Notify users: 'New Spirit Awakening: Chapter [X] is out!'.",
+          "Background Sync": "Check for new releases and pre-cache them automatically during periodic sync."
+        }
+      },
+      {
+        "id": "PROMPT_11_USER_SETTINGS_AND_STORAGE_MANAGEMENT",
+        "objective": "Create a settings page for user control over experience and offline data.",
+        "task": "Design and implement the 'Settings' page.",
+        "instructions": {
+          "Customization": "Toggles for Theme, Reading Mode (Spirit/Scroll), and Notification preferences.",
+          "Storage": "Display cultivation-data used quota. Provide 'Purge Low-Level Cache' options to free up local space."
+        }
+      }
+    ]
+  }
+}

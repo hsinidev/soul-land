@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Soul Land | Settings & Storage</title>
+    <meta name="theme-color" content="#4f46e5">
+    
+    <link rel="manifest" href="/manifest.json">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+      tailwind.config = {
+        theme: {
+          extend: {
+            colors: {
+              primary: '#4f46e5',
+              spiritblue: '#00d2ff',
+              spiritgold: '#fbbf24',
+              void: '#1e1b4b',
+              darkbg: '#0a0a14',
+            },
+            fontFamily: {
+              heading: ['Cinzel', 'serif'],
+              body: ['Plus Jakarta Sans', 'sans-serif'],
+            }
+          }
+        }
+      }
+    </script>
+    <link rel="stylesheet" href="/assets/css/styles.css">
+</head>
+<body class="bg-darkbg text-gray-200 font-body">
+
+    <!-- Header -->
+    <header class="fixed w-full top-0 z-50 glass-panel border-b border-spiritblue/20">
+        <div class="container mx-auto px-6 py-4 flex justify-between items-center">
+            <a href="/index.html" class="flex items-center space-x-2">
+                <div class="w-8 h-8 rounded-full bg-gradient-to-tr from-primary to-spiritblue flex items-center justify-center">
+                    <span class="text-white font-bold text-sm font-heading">SL</span>
+                </div>
+                <span class="text-xl font-heading font-bold text-gradient">Soul Land</span>
+            </a>
+            
+            <nav class="hidden md:flex space-x-8">
+                <a href="/index.html" class="hover:text-spiritblue transition">Home</a>
+                <a href="/chapters.html" class="hover:text-spiritblue transition">Chapters</a>
+                <a href="/characters.html" class="hover:text-spiritblue transition">Spirits</a>
+                <a href="/settings.html" class="text-spiritblue border-b-2 border-spiritblue pb-1">Settings</a>
+            </nav>
+            <button class="md:hidden text-2xl text-spiritblue">&#9776;</button>
+        </div>
+    </header>
+
+    <main class="container mx-auto px-6 pt-32 pb-24 max-w-3xl min-h-screen">
+        <h1 class="text-4xl text-center font-heading font-bold mb-12">User <span class="text-gradient">Settings</span></h1>
+
+        <div class="space-y-8">
+            
+            <!-- Preferences Section -->
+            <div class="glass-panel p-8 rounded-2xl border border-spiritblue/20">
+                <h2 class="text-2xl font-heading font-bold text-spiritgold border-b border-void pb-3 mb-6">Cultivation Preferences</h2>
+                
+                <div class="flex items-center justify-between mb-6">
+                    <div>
+                        <h3 class="font-bold text-white text-lg">Push Notifications</h3>
+                        <p class="text-sm text-gray-400">Receive alerts when new chapters emerge.</p>
+                    </div>
+                    <label class="relative inline-flex items-center cursor-pointer">
+                        <input type="checkbox" id="toggle-notifications" class="sr-only peer">
+                        <div class="w-14 h-7 bg-void peer-focus:outline-none rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-6 after:w-6 after:transition-all peer-checked:bg-spiritblue border border-spiritblue/30"></div>
+                    </label>
+                </div>
+
+                <div class="flex items-center justify-between mb-6">
+                    <div>
+                        <h3 class="font-bold text-white text-lg">Reader Mode</h3>
+                        <p class="text-sm text-gray-400">Default to Spirit Ring Glow border around reading area.</p>
+                    </div>
+                    <select class="bg-void border border-spiritblue/40 text-white rounded px-4 py-2 focus:outline-none">
+                        <option>Dark Mode (Default)</option>
+                        <option>OLED Pure Black</option>
+                        <option>Scroll (Parchment)</option>
+                    </select>
+                </div>
+            </div>
+
+            <!-- Storage and Offline -->
+            <div class="glass-panel p-8 rounded-2xl border border-spiritblue/20">
+                <h2 class="text-2xl font-heading font-bold text-spiritgold border-b border-void pb-3 mb-6">Storage & Cache</h2>
+                
+                <div class="mb-8">
+                    <div class="flex justify-between text-sm mb-2">
+                        <span class="text-white font-semibold">Spirit Space Used (Offline Chapters)</span>
+                        <span class="text-spiritblue" id="storage-usage">Calculating...</span>
+                    </div>
+                    <div class="w-full bg-void rounded-full h-3">
+                        <div id="storage-bar" class="h-3 rounded-full bg-gradient-to-r from-primary to-spiritgold w-0 transition-all duration-1000"></div>
+                    </div>
+                    <div class="mt-2 text-xs text-gray-500 text-right">App Shell + Cached Assets</div>
+                </div>
+
+                <div class="flex flex-col sm:flex-row gap-4">
+                    <button class="flex-1 py-3 border border-red-500/50 text-red-400 hover:bg-red-500/20 rounded-xl transition font-bold" id="btn-purge">
+                        Purge Low-Level Cache (Free Space)
+                    </button>
+                    <button class="flex-1 py-3 bg-gradient-to-r from-primary to-spiritblue text-white hover:shadow-[0_0_15px_rgba(0,210,255,0.4)] rounded-xl transition font-bold">
+                        Download Next 5 Chapters
+                    </button>
+                </div>
+            </div>
+
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-black py-6 border-t border-void text-center text-gray-600 text-sm">
+        <p>&copy; 2026 readsoulland.com</p>
+    </footer>
+
+    <script src="/assets/js/app.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            // Mock Storage Calculation
+            if(navigator.storage && navigator.storage.estimate) {
+                navigator.storage.estimate().then(estimate => {
+                    const usedMB = (estimate.usage / (1024 * 1024)).toFixed(2);
+                    const quotaMB = (estimate.quota / (1024 * 1024)).toFixed(2);
+                    document.getElementById('storage-usage').textContent = `${usedMB} MB`;
+                    document.getElementById('storage-bar').style.width = Math.min((estimate.usage / estimate.quota) * 100, 100) + '%';
+                });
+            } else {
+                document.getElementById('storage-usage').textContent = '24.5 MB';
+                document.getElementById('storage-bar').style.width = '15%';
+            }
+
+            // Purge Cache Demo
+            document.getElementById('btn-purge').addEventListener('click', () => {
+                if ('caches' in window) {
+                    caches.delete('soulland-cache-v1').then(deleted => {
+                        alert(deleted ? "Cache purged. Space freed." : "Cache is already empty.");
+                        document.getElementById('storage-usage').textContent = '2.1 MB';
+                        document.getElementById('storage-bar').style.width = '2%';
+                    });
+                }
+            });
+
+            // Notification toggle link to permission
+            const toggleNotify = document.getElementById('toggle-notifications');
+            if(window.Notification && Notification.permission === 'granted') {
+                toggleNotify.checked = true;
+            }
+            toggleNotify.addEventListener('change', (e) => {
+                if(e.target.checked) {
+                    Notification.requestPermission().then(p => {
+                        if(p !== 'granted') e.target.checked = false;
+                    });
+                }
+            });
+        });
+    </script>
+</body>
+</html>
